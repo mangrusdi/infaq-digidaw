@@ -1,7 +1,6 @@
 <?php
 include 'koneksi.php';
 
-// Hitung total pemasukan, pengeluaran, dan saldo
 $totalPemasukan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(jumlah_idr) AS total FROM transaksi WHERE tipe='pemasukan'"))['total'] ?? 0;
 $totalPengeluaran = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(jumlah_idr) AS total FROM transaksi WHERE tipe='pengeluaran'"))['total'] ?? 0;
 $saldo = $totalPemasukan - $totalPengeluaran;
@@ -19,7 +18,6 @@ $saldo = $totalPemasukan - $totalPengeluaran;
   <div class="container mx-auto p-6">
     <h1 class="text-3xl font-bold text-center text-green-700 mb-8">Sistem Pencatatan Infaq Digital</h1>
 
-    <!-- Dashboard Ringkasan -->
     <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
       <div class="bg-white shadow rounded-lg p-4">
         <h2 class="text-lg font-semibold text-gray-700">Total Pemasukan</h2>
@@ -35,7 +33,6 @@ $saldo = $totalPemasukan - $totalPengeluaran;
       </div>
     </section>
 
-    <!-- Form Pemasukan Infaq -->
     <section class="bg-white shadow rounded-lg p-6 mb-8">
       <h2 class="text-xl font-semibold text-gray-700 mb-4">Pencatatan Pemasukan Infaq</h2>
       <form action="proses_transaksi.php" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -51,7 +48,6 @@ $saldo = $totalPemasukan - $totalPengeluaran;
       </form>
     </section>
 
-    <!-- Form Pengeluaran Infaq -->
     <section class="bg-white shadow rounded-lg p-6 mb-8">
       <h2 class="text-xl font-semibold text-gray-700 mb-4">Pencatatan Pengeluaran Infaq</h2>
       <form action="proses_transaksi.php" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -67,7 +63,6 @@ $saldo = $totalPemasukan - $totalPengeluaran;
       </form>
     </section>
 
-    <!-- Tabel Histori Transaksi -->
     <section class="bg-white shadow rounded-lg p-6">
       <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4 gap-4">
         <h2 class="text-xl font-semibold text-gray-700">Histori Transaksi</h2>
