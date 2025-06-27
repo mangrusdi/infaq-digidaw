@@ -1,8 +1,6 @@
 <?php
-// File: dashboard.php
 include 'koneksi.php';
 
-// Hitung total pemasukan, pengeluaran, dan saldo
 $totalPemasukan = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(jumlah_idr) AS total FROM transaksi WHERE tipe='pemasukan'"))['total'] ?? 0;
 $totalPengeluaran = mysqli_fetch_assoc(mysqli_query($conn, "SELECT SUM(jumlah_idr) AS total FROM transaksi WHERE tipe='pengeluaran'"))['total'] ?? 0;
 $saldo = $totalPemasukan - $totalPengeluaran;
@@ -28,16 +26,15 @@ $saldo = $totalPemasukan - $totalPengeluaran;
 <body class="bg-gradient-to-br from-green-50 to-blue-50 min-h-screen flex items-center justify-center">
   <div class="container mx-auto px-4 py-8">
     <div class="max-w-4xl mx-auto">
-      <!-- Header -->
+
       <div class="text-center mb-12">
         <img src="https://cdn-icons-png.flaticon.com/512/3131/3131634.png" alt="Logo Masjid" class="w-24 h-24 mx-auto mb-4">
         <h1 class="text-3xl md:text-4xl font-bold text-green-700 mb-2">Laporan Infaq Digital</h1>
         <p class="text-gray-600">Ringkasan Keuangan Masjid Al-Falah</p>
       </div>
 
-      <!-- Cards Section -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        <!-- Pemasukan Card -->
+
         <div class="bg-white rounded-xl shadow-lg p-6 card">
           <div class="flex items-center mb-4">
             <div class="p-3 bg-green-100 rounded-lg mr-4">
@@ -51,7 +48,6 @@ $saldo = $totalPemasukan - $totalPengeluaran;
           <p class="text-sm text-gray-500 mt-2">Dana yang terkumpul dari donatur</p>
         </div>
 
-        <!-- Pengeluaran Card -->
         <div class="bg-white rounded-xl shadow-lg p-6 card">
           <div class="flex items-center mb-4">
             <div class="p-3 bg-red-100 rounded-lg mr-4">
@@ -65,7 +61,6 @@ $saldo = $totalPemasukan - $totalPengeluaran;
           <p class="text-sm text-gray-500 mt-2">Dana yang telah digunakan untuk kegiatan</p>
         </div>
 
-        <!-- Saldo Card -->
         <div class="bg-white rounded-xl shadow-lg p-6 card">
           <div class="flex items-center mb-4">
             <div class="p-3 bg-blue-100 rounded-lg mr-4">
@@ -80,7 +75,6 @@ $saldo = $totalPemasukan - $totalPengeluaran;
         </div>
       </div>
 
-      <!-- Info Box -->
       <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
         <h2 class="text-xl font-semibold text-gray-700 mb-4">Informasi Terkini</h2>
         <div class="space-y-4">
