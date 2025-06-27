@@ -227,8 +227,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     
     <div class="copyright">
-      <p>&copy; <?= date('Y') ?> Sistem Pencatatan Infaq Digital</p>
-      <p class="mt-1">Masjid Al-Barakah</p>
+      <p>&copy; <?= date('Y') ?> D3 Teknik Informatika 24</p>
+      <p class="mt-1">ULBI</p>
     </div>
   </div>
 
