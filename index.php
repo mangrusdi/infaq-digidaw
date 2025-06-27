@@ -11,98 +11,172 @@ $saldo = $totalPemasukan - $totalPengeluaran;
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Laporan Infaq Digital</title>
+  <title>Informasi Laporan Keuangan</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
+    body {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://i.ibb.co/4nQJM3rk/Screenshot-2025-06-27-220504.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
     .card {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 16px;
+      overflow: hidden;
     }
+    
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .info-box {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 16px;
+    }
+    
+    .logo-container {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(76, 175, 80, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+    }
+    
+    .divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+      margin: 25px 0;
     }
   </style>
 </head>
-<body class="bg-gradient-to-br from-green-50 to-blue-50 min-h-screen flex items-center justify-center">
+<body class="text-white">
   <div class="container mx-auto px-4 py-8">
     <div class="max-w-4xl mx-auto">
 
       <div class="text-center mb-12">
-        <img src="https://cdn-icons-png.flaticon.com/512/3131/3131634.png" alt="Logo Masjid" class="w-24 h-24 mx-auto mb-4">
-        <h1 class="text-3xl md:text-4xl font-bold text-green-700 mb-2">Laporan Infaq Digital</h1>
-        <p class="text-gray-600">Ringkasan Keuangan Masjid Al-Falah</p>
+        <div class="logo-container mb-6 pulse">
+          <i class="fas fa-mosque text-5xl text-green-600"></i>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-3 text-white tracking-wide">Informasi Laporan Keuangan</h1>
+        <p class="text-xl text-green-200 mb-2">Masjid Al-Falah</p>
+        <div class="divider"></div>
+        <p class="text-green-100 max-w-2xl mx-auto">Transparansi penuh dalam pengelolaan dana infaq untuk kemajuan masjid dan umat</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
 
-        <div class="bg-white rounded-xl shadow-lg p-6 card">
-          <div class="flex items-center mb-4">
-            <div class="p-3 bg-green-100 rounded-lg mr-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+        <div class="card">
+          <div class="p-6">
+            <div class="flex items-center mb-4">
+              <div class="p-3 bg-green-100 rounded-lg mr-4">
+                <i class="fas fa-coins text-2xl text-green-600"></i>
+              </div>
+              <h2 class="text-lg font-semibold text-gray-800">Total Pemasukan</h2>
             </div>
-            <h2 class="text-lg font-semibold text-gray-700">Total Pemasukan</h2>
+            <p class="text-3xl font-bold text-green-600 mb-2">Rp <?= number_format($totalPemasukan, 0, ',', '.') ?></p>
+            <div class="flex items-center mt-4">
+            </div>
           </div>
-          <p class="text-2xl md:text-3xl font-bold text-green-600">Rp <?= number_format($totalPemasukan, 0, ',', '.') ?></p>
-          <p class="text-sm text-gray-500 mt-2">Dana yang terkumpul dari donatur</p>
+          <div class="bg-green-50 px-4 py-3">
+            <p class="text-sm text-green-700"><i class="fas fa-info-circle mr-2"></i>Dana yang terkumpul dari donatur</p>
+          </div>
         </div>
 
-        <div class="bg-white rounded-xl shadow-lg p-6 card">
-          <div class="flex items-center mb-4">
-            <div class="p-3 bg-red-100 rounded-lg mr-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
+        <div class="card">
+          <div class="p-6">
+            <div class="flex items-center mb-4">
+              <div class="p-3 bg-red-100 rounded-lg mr-4">
+                <i class="fas fa-hand-holding-usd text-2xl text-red-600"></i>
+              </div>
+              <h2 class="text-lg font-semibold text-gray-800">Total Pengeluaran</h2>
             </div>
-            <h2 class="text-lg font-semibold text-gray-700">Total Pengeluaran</h2>
+            <p class="text-3xl font-bold text-red-600 mb-2">Rp <?= number_format($totalPengeluaran, 0, ',', '.') ?></p>
+            <div class="flex items-center mt-4">
+            </div>
           </div>
-          <p class="text-2xl md:text-3xl font-bold text-red-600">Rp <?= number_format($totalPengeluaran, 0, ',', '.') ?></p>
-          <p class="text-sm text-gray-500 mt-2">Dana yang telah digunakan untuk kegiatan</p>
+          <div class="bg-red-50 px-4 py-3">
+            <p class="text-sm text-red-700"><i class="fas fa-info-circle mr-2"></i>Dana yang telah digunakan untuk kegiatan</p>
+          </div>
         </div>
 
-        <div class="bg-white rounded-xl shadow-lg p-6 card">
-          <div class="flex items-center mb-4">
-            <div class="p-3 bg-blue-100 rounded-lg mr-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-              </svg>
+        <div class="card">
+          <div class="p-6">
+            <div class="flex items-center mb-4">
+              <div class="p-3 bg-blue-100 rounded-lg mr-4">
+                <i class="fas fa-piggy-bank text-2xl text-blue-600"></i>
+              </div>
+              <h2 class="text-lg font-semibold text-gray-800">Saldo Saat Ini</h2>
             </div>
-            <h2 class="text-lg font-semibold text-gray-700">Saldo Saat Ini</h2>
+            <p class="text-3xl font-bold text-blue-600 mb-2">Rp <?= number_format($saldo, 0, ',', '.') ?></p>
+            <div class="flex items-center mt-4">
+            </div>
           </div>
-          <p class="text-2xl md:text-3xl font-bold text-blue-600">Rp <?= number_format($saldo, 0, ',', '.') ?></p>
-          <p class="text-sm text-gray-500 mt-2">Saldo terkini yang tersedia</p>
+          <div class="bg-blue-50 px-4 py-3">
+            <p class="text-sm text-blue-700"><i class="fas fa-info-circle mr-2"></i>Saldo terkini yang tersedia</p>
+          </div>
         </div>
       </div>
 
-      <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
-        <h2 class="text-xl font-semibold text-gray-700 mb-4">Informasi Terkini</h2>
-        <div class="space-y-4">
-          <div class="flex items-start">
-            <div class="flex-shrink-0 mt-1">
-              <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+      <div class="info-box p-6 mb-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Penggunaan Dana Terkini</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="text-center">
+            <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-hands-helping text-3xl text-green-600"></i>
             </div>
-            <p class="ml-3 text-gray-600">Dana infaq digunakan untuk pembangunan fasilitas masjid</p>
+            <h3 class="font-bold text-lg text-gray-800 mb-2">Bantuan Sosial</h3>
+            <p class="text-gray-600">untuk bantuan keluarga dhuafa</p>
           </div>
-          <div class="flex items-start">
-            <div class="flex-shrink-0 mt-1">
-              <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+          <div class="text-center">
+            <div class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-book-quran text-3xl text-blue-600"></i>
             </div>
-            <p class="ml-3 text-gray-600">Laporan keuangan diperbarui setiap hari Jumat</p>
+            <h3 class="font-bold text-lg text-gray-800 mb-2">Pendidikan</h3>
+            <p class="text-gray-600">untuk pembelian buku agama</p>
           </div>
-          <div class="flex items-start">
-            <div class="flex-shrink-0 mt-1">
-              <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+          <div class="text-center">
+            <div class="bg-yellow-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-tools text-3xl text-yellow-600"></i>
             </div>
-            <p class="ml-3 text-gray-600">Transparansi 100% untuk semua penggunaan dana</p>
+            <h3 class="font-bold text-lg text-gray-800 mb-2">Renovasi</h3>
+            <p class="text-gray-600">untuk perbaikan masjid </p>
           </div>
         </div>
+      </div>
+
+      <div class="text-center my-12 py-8 px-4 bg-black bg-opacity-30 rounded-xl">
+        <i class="fas fa-quote-left text-4xl text-green-400 opacity-50 mb-4"></i>
+        <p class="text-xl italic text-green-100 max-w-2xl mx-auto">
+          "Sesungguhnya orang-orang yang membenarkan Allah dan Rasul-Nya, mereka itu akan bersama-sama dengan orang-orang yang dianugerahi nikmat oleh Allah, yaitu para nabi, shiddiqin, syuhada, dan orang-orang shalih. Mereka itulah sebaik-baik teman."
+        </p>
+        <p class="mt-4 text-green-300">QS. An-Nisa: 69</p>
       </div>
 
       <div class="text-center text-gray-500 text-sm">
-        <p>© <?= date('Y') ?> Sistem Pencatatan Infaq Digital - Masjid Al-Falah</p>
+        <p>© 2025 - D3 Teknik Informatika '24 - ULBI</p>
+
       </div>
-    </div>
-  </div>
-</body>
-</html>
